@@ -1,0 +1,7 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Package Details | Smart Skills AI</title><link rel="stylesheet" href="css/site.css"><script src="scripts/theme.js"></script></head><body>
+<div class="n"><div class="w"><a class="lg" href="index.html">Smart Skills <b>AI</b></a><div class="na"><button class="tg" onclick="toggleTheme()">☀️ Light</button><a class="btn o sm" href="index.html#packages">← All Packages</a></div></div></div>
+<div class="pg w" id="box"></div>
+<script src="scripts/auth.js"></script><script>
+var id=new URLSearchParams(location.search).get('p'),p=load().cfg.plans.find(function(x){return x.id===id});
+$('#box').innerHTML=p?'<div class="cd"><span class="tag">Package Details</span><h1>'+esc(p.name)+'</h1><div class="pr">$'+p.price+' <small style="font-size:14px;color:var(--m)">USDT</small></div><p>'+(p.days?p.days+' din ke liye':'Lifetime')+' MT5 automatic trading robot access.</p><ul style="line-height:2;padding-left:18px">'+feats(p).map(function(f){return'<li>'+f+'</li>'}).join('')+'<li>Income plan: Direct '+load().cfg.direct+'% + 10-level income</li></ul><div class="off" style="font-size:16px">🎁 Buy 2, Get 1 FREE Strategy</div><div class="warn">⚠️ Trading mein risk hota hai. Profit guaranteed nahi hai.</div><a class="btn w100" href="checkout.html?p='+p.id+'">Proceed to Checkout →</a></div>':'<div class="cd">Package nahi mila. <a href="index.html#packages">Packages dekho</a></div>';
+</script></body></html>
