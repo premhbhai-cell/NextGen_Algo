@@ -4,15 +4,16 @@
 <script src="scripts/auth.js"></script><script>
 var oid=new URLSearchParams(location.search).get('o'),S=sess('user'),o=load().reqs.find(function(x){return x.id===oid});
 if(!S)location.href='login.html?next='+encodeURIComponent('payment.html?o='+oid);
-if(!o||!S||o.uid!==S.id||o.status!=='awaiting')$('#box').innerHTML='<div class="cd">Order nahi mila ya payment pehle hi submit ho chuki hai. <a href="user.html#pkg">My Panel</a></div>';
-else $('#box').innerHTML='<h1>Payment — '+esc(o.name)+'</h1><p style="color:var(--m)">Step 2 of 2 — Amount: <b class="gold" style="font-size:22px">'+o.price+' USDT</b></p><div class="row"><div class="cd" style="text-align:center"><div class="qr"><img src="images/pay-qr.png" alt="USDT BEP20 QR"></div><p style="margin-top:10px">QR scan karke pay karo</p></div>'+
-'<div class="cd"><b>Network: '+PAY.net+'</b><div class="ad">'+PAY.addr+'</div><button class="btn sm" onclick="cp()">📋 Copy Address</button><div class="warn">⚠️ Sirf <b>USDT on BEP20 (BNB Smart Chain)</b> bhejo. Doosre network par bheja paisa wapas nahi aayega.</div></div></div>'+
-'<div class="cd" style="margin-top:18px"><h3>Payment ke baad</h3><p>Transaction hash (TXID) daalo. Admin verify karke package activate karega.</p><input class="in" id="tx" placeholder="Transaction hash / TXID"><div class="err" id="er"></div><button class="btn w100" onclick="sub()">Submit Payment Proof</button></div>';
+if(!o||!S||o.uid!==S.id||o.status!=='awaiting')$('#box').innerHTML='<div class="cd">Order not found, or payment proof has already been submitted. <a href="user.html#pkg">My Panel</a></div>';
+else $('#box').innerHTML='<h1>Payment — '+esc(o.name)+'</h1><p style="color:var(--m)">Step 2 of 2 — Amount: <b class="gold" style="font-size:22px">'+o.price+' USDT</b></p><div class="row"><div class="cd" style="text-align:center"><div class="qr"><img src="images/pay-qr.png" alt="USDT BEP20 QR"></div><p style="margin-top:10px">Scan the QR code to pay</p></div>'+
+'<div class="cd"><b>Network: '+PAY.net+'</b><div class="ad">'+PAY.addr+'</div><button class="btn sm" onclick="cp()">📋 Copy Address</button><div class="warn">⚠️ Send only <b>USDT on BEP20 (BNB Smart Chain)</b>. Funds sent through another network may be permanently lost.</div></div></div>'+
+'<div class="cd" style="margin-top:18px"><h3>After Payment</h3><p>Enter your transaction hash (TXID). The administrator will review your payment and approve the package.</p><input class="in" id="tx" placeholder="Transaction hash / TXID"><div class="err" id="er"></div><button class="btn w100" onclick="sub()">Submit Payment Proof</button></div>';
 function cp(){var a=PAY.addr;if(navigator.clipboard)navigator.clipboard.writeText(a).then(function(){alert('Address copied')},function(){prompt('Copy:',a)});else prompt('Copy:',a)}
 function sub(){var t=$('#tx').value.trim(),d=load(),r=d.reqs.find(function(x){return x.id===oid});
  if(!r||r.status!=='awaiting')return;
- if(t.length<10||/\s/.test(t)){$('#er').textContent='Sahi TXID daalo';return}
- if(d.reqs.some(function(x){return x.txid===t})){$('#er').textContent='Ye TXID pehle use ho chuka hai';return}
+ if(t.length<10||/\s/.test(t)){$('#er').textContent='Please enter a valid transaction hash (TXID).';return}
+ if(d.reqs.some(function(x){return x.txid===t})){$('#er').textContent='This TXID has already been submitted.';return}
  r.txid=t;r.status='pending';r.paidAt=Date.now();save(d);
- $('#box').innerHTML='<div class="okb"><h2>✅ Payment proof submit ho gaya</h2><p>Admin verification ke baad '+esc(r.name)+' activate hoga. Status User Panel mein dikhega.</p><a class="btn" href="user.html#pkg">Go to My Panel</a></div>'}
+ if(d.cfg&&d.cfg.wa){var msg='Payment proof submitted: '+r.name+' | User ID: '+r.uid+' | TXID: '+t+'. Please review and approve in the Admin Panel.';window.open(waLink(d.cfg.wa,msg),'_blank')}
+ $('#box').innerHTML='<div class="okb"><h2>✅ Payment proof submitted successfully</h2><p>Your package will be activated after administrator approval. Package: '+esc(r.name)+'. You can track the status in your User Panel.</p><a class="btn" href="user.html#pkg">Go to My Panel</a></div>'}
 </script></body></html>

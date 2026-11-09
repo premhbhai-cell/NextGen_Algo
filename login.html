@@ -1,18 +1,19 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login | Smart Skills AI</title><link rel="stylesheet" href="css/panel.css"><script src="scripts/theme.js"></script></head><body>
-<div class="hero"><div class="l"><h1>Smart Skills AI</h1><p style="font-size:17px;opacity:.9">Forex &amp; Gold MT5 Trading Robot — apna account manage karo, team badhao, kamao.</p><a href="index.html" style="color:#fff">← Back to website</a></div>
+<div class="hero"><div class="l"><h1>Smart Skills AI</h1><p style="font-size:17px;opacity:.9">Automated MT5 Gold (XAUUSD) Trading Robot and account management.</p><a href="index.html" style="color:#fff">← Back to Website</a></div>
 <div class="r"><div class="card" style="width:100%;max-width:400px"><h2 style="margin-top:0">Welcome</h2>
-<div class="rt"><button id="t1" class="on" onclick="tab(1)">👤 User Login</button><button id="t2" onclick="tab(2)">🛡️ Admin Login</button><button id="t3" onclick="tab(3)">📝 Sign Up</button></div>
-<div id="f1"><input id="le" type="email" placeholder="User email"><input id="lp" type="password" placeholder="Password"><button style="width:100%;margin-top:6px" onclick="doLogin()">Login as User</button></div>
+<div class="rt"><button id="t1" class="on" onclick="tab(1)">👤 User Login</button><button id="t2" onclick="tab(2)">🛡️ Admin Login</button><button id="t3" onclick="tab(3)">📝 Create Account</button></div>
+<div id="f1"><input id="le" type="email" placeholder="Email address"><input id="lp" type="password" placeholder="Password"><button style="width:100%;margin-top:6px" onclick="doLogin()">Login</button><p style="text-align:right;margin:10px 0 0"><a href="#" onclick="forgot();return false">Forgot password?</a></p></div>
 <div id="f2" style="display:none"><input id="ae" type="email" placeholder="Admin email"><input id="ap" type="password" placeholder="Admin password"><button style="width:100%;margin-top:6px;background:linear-gradient(135deg,#6d28d9,#8b5cf6);color:#fff" onclick="doAdmin()">Login as Admin</button></div>
-<div id="f3" style="display:none"><input id="sn" placeholder="Full name"><input id="se" type="email" placeholder="Email"><input id="sph" placeholder="Phone"><input id="sp" type="password" placeholder="Password (min 6)"><input id="sr" placeholder="Referral code (optional)"><button style="width:100%;margin-top:6px" onclick="doSign()">Create Account</button></div>
+<div id="f3" style="display:none"><input id="sn" placeholder="Full name"><input id="se" type="email" placeholder="Email"><input id="sph" placeholder="Phone"><input id="sp" type="password" placeholder="Password (minimum 6 characters)"><input id="sr" placeholder="Referral code (optional)"><button style="width:100%;margin-top:6px" onclick="doSign()">Create Account</button></div>
 <div class="err" id="er"></div></div></div></div>
 <script src="scripts/auth.js"></script><script>
+function forgot(){var e=$('#le').value.trim();var m=requestPasswordRecovery(e);if(m.indexOf('A password recovery request')===0){var subject=encodeURIComponent('Password recovery request');var body=encodeURIComponent('Please help me recover access to my SmartSkillsAI.in account. Registered email: '+e);location.href='mailto:'+ADM.e+'?subject='+subject+'&body='+body;$('#er').textContent='Your email application will open with a prefilled recovery request. Support will verify your account and assist with a reset.'}else $('#er').textContent=m}
 var NX=nextOk(new URLSearchParams(location.search).get('next'));function dest(){return NX||'user.html'}
 if(sess('user'))location.href=dest();
 var cur=1,q=new URLSearchParams(location.search).get('ref');if(q){$('#sr').value=q;tab(3)}
 function tab(n){cur=n;for(var i=1;i<4;i++){$('#f'+i).style.display=i==n?'':'none';$('#t'+i).className=i==n?'on':''}$('#er').textContent=''}
-function doLogin(){var e=$('#le').value.trim().toLowerCase();if(e===ADM.e){$('#er').textContent='Ye Admin account hai — Admin Login tab use karo';return}var m=userLogin(e,$('#lp').value);if(m)$('#er').textContent=m;else location.href=dest()}
-function doAdmin(){if(adminLogin($('#ae').value,$('#ap').value))location.href='admin.html';else $('#er').textContent='Admin email ya password galat hai'}
+function doLogin(){var e=$('#le').value.trim().toLowerCase();if(e===ADM.e){$('#er').textContent='This is the administrator account. Please use the Admin Login tab.';return}var m=userLogin(e,$('#lp').value);if(m)$('#er').textContent=m;else location.href=dest()}
+function doAdmin(){if(adminLogin($('#ae').value,$('#ap').value))location.href='admin.html';else $('#er').textContent='Incorrect admin email address or password.'}
 function doSign(){var m=signup($('#sn').value,$('#se').value,$('#sph').value,$('#sp').value,$('#sr').value);if(m)$('#er').textContent=m;else location.href=dest()}
 document.addEventListener('keydown',function(e){if(e.key==='Enter')[0,doLogin,doAdmin,doSign][cur]()});
 </script></body></html>
