@@ -1,4 +1,4 @@
-var K='ssa_db',ADM={e:'premhbhai@gmail.com',p:'premjha52'};
+var K='ssa_db',ADM={e:'vikaha2026@gmail.com',p:'Vikash@$#54321'};
 function $(s){return document.querySelector(s)}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 var LV=[10,5,2,2,1,1,1,1,1,1],PAY={addr:'0x19D8A647A5b306eC8c342de2Faa464F7C868B086',net:'USDT (BEP20 · BNB Smart Chain)'};
