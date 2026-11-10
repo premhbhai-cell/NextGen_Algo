@@ -18,3 +18,10 @@ This project currently stores users, orders, referral codes, and sessions in bro
 The password recovery link opens an email draft; it does not send a secure OTP or reset link automatically. WhatsApp messages are pre-filled in WhatsApp and must be sent by the person using WhatsApp. Automated email/WhatsApp delivery and production-grade account recovery require a backend, database, email provider, and WhatsApp Business API integration.
 
 Before public launch, move authentication, referral codes, orders, approvals, and package activation to a secure server-side backend. Also replace the demo administrator credentials in `scripts/auth.js`.
+
+MOBILE PANEL / ACCOUNT RECOVERY UPDATE
+- Admin and user panels now use a mobile slide-out navigation drawer. Every desktop panel section is available from the mobile Menu button.
+- Registration and profile phone fields include a country calling-code selector.
+- Registration includes a Check Code action for referral codes.
+- The Forgot Password link opens a pre-filled email request to the configured support/admin address.
+- IMPORTANT: This project is a static browser/localStorage application. It cannot send password-reset emails or securely verify email ownership by itself. For automatic reset links or OTP verification, connect a backend, database, and email provider before production use.
