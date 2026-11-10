@@ -26,3 +26,40 @@ details{background:var(--c);border:1px solid var(--b);border-radius:14px;padding
 .pg{max-width:900px;margin:34px auto}.pg h1{margin:0 0 6px}.row{display:grid;grid-template-columns:1fr 1fr;gap:20px}.ad{background:var(--bg2);border:1px dashed var(--g);border-radius:12px;padding:12px;word-break:break-all;font-family:monospace;font-size:14px;margin:10px 0}.qr{background:#fff;border-radius:16px;padding:10px;max-width:280px;margin:auto}.qr img{width:100%;display:block}
 .warn{background:#ef444422;border:1px solid #ef4444;border-radius:12px;padding:12px;font-size:13px;margin:12px 0}.err{color:#ef4444;min-height:18px}.okb{background:#10b98122;border:1px solid #10b981;border-radius:12px;padding:16px}
 @media(max-width:860px){.ls{display:none}.hero .w,.row,.lab,.calc{grid-template-columns:1fr}.hero h1{font-size:36px}.hd h2{font-size:27px}.ar{display:none}}
+
+/* Reference-matched subscription pricing cards */
+.pricing-section{background:#f8fafc!important;color:#111827;padding:58px 0 24px}
+.pricing-section .hd{margin-bottom:54px}
+.pricing-section .hd .tag{color:#2563eb;letter-spacing:1.2px}
+.pricing-section .hd h2{color:#111827;font-size:34px}
+.pricing-section .hd p{color:#475569;font-size:15px}
+.pricing-wrap{max-width:1100px}
+.pricing-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;align-items:stretch}
+.price-card{background:#fff;border:1px solid #dce4ef;border-radius:22px;padding:25px 20px 20px;min-width:0;display:flex;flex-direction:column;box-shadow:0 1px 2px #0f172a08;color:#111827;min-height:604px}
+.price-card.price-vip{box-shadow:0 12px 22px #0f172a18;border-color:#dce4ef}
+.price-badge{display:inline-flex;align-self:flex-start;background:#eff6ff;color:#2563eb;border-radius:99px;padding:4px 11px;font-size:10px;font-weight:800;letter-spacing:.35px;white-space:nowrap;margin-bottom:14px}
+.price-badge.trial-badge{background:#ecfdf5;color:#059669}
+.price-card h3{font-size:16px;line-height:1.5;margin:0 0 12px;color:#111827;min-height:48px;font-weight:750}
+.price-line{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:0 0 13px}
+.price-line del{font-size:14px;color:#94a3b8;font-weight:600}
+.price-line strong{font-size:29px;line-height:1.1;color:#111827;font-weight:850;letter-spacing:-.8px}
+.price-features{list-style:none!important;padding:0!important;margin:0 0 10px!important;flex:1;color:#64748b;font-size:11px;line-height:1.35}
+.price-features li{display:flex;gap:7px;align-items:flex-start;margin:0 0 9px!important}
+.price-features li:before{content:none!important}
+.feature-mark{color:#2563eb;font-size:13px;font-weight:800;line-height:1.1;flex:0 0 11px}
+.price-features li.included{background:#ecfdf5;color:#047857;border-radius:8px;padding:8px 7px;margin:0 0 7px!important}
+.price-features li.included .feature-mark{color:#10b981}
+.min-fund{font-size:11px;color:#334155;font-weight:650;margin:3px 0 7px}
+.min-fund span{color:#2563eb;font-size:14px;margin-right:3px}
+.upgrade-note{font-size:8px;line-height:1.35;color:#94a3b8;font-style:italic;min-height:35px;margin:0 0 12px}
+.empty-note{min-height:35px}
+.price-cta{display:block;text-align:center;background:#111827;color:#fff!important;border-radius:11px;padding:9px 8px;font-size:11px;font-weight:750;margin-top:auto;white-space:nowrap}
+.price-cta:hover{background:#2563eb}
+@media(max-width:1050px){.pricing-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.price-card{min-height:590px}}
+@media(max-width:680px){.pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.price-card{padding:18px 14px;min-height:600px}.price-line strong{font-size:25px}.price-card h3{font-size:14px}.price-features{font-size:10px}}
+@media(max-width:430px){.pricing-grid{grid-template-columns:1fr}.price-card{min-height:0}.price-card h3{min-height:0}.upgrade-note{min-height:0}}
+
+/* Muted unavailable features, like the supplied package reference */
+.price-features li.excluded{color:#a8b4c5!important;opacity:.78}
+.price-features li.excluded .feature-mark{color:#b9c5d4!important;font-weight:500;font-size:15px}
+.price-features li.excluded span:last-child{color:#a8b4c5!important}

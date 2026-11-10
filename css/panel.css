@@ -25,3 +25,9 @@ button.g{background:#16a34a;color:#fff}button.r{background:#dc2626;color:#fff}bu
 .box{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}.box .card{width:100%;max-width:380px}
 .rt{display:flex;gap:6px;margin-bottom:14px}.rt button{flex:1;background:var(--bg2);color:var(--t);border:1px solid var(--b);padding:11px 4px}.rt button.on{background:linear-gradient(135deg,#f5b301,#ff8a00);color:#1a1200}
 @media(max-width:782px){.shell{flex-direction:column}.side{width:100%;display:flex;overflow-x:auto;padding:6px}.brand{display:none}.side a{white-space:nowrap;margin:0 3px;border-left:0;border-bottom:3px solid transparent}.side a.on{border-bottom-color:#f5b301}.body{padding:12px}.hero{flex-direction:column}.hero .l{padding:30px 20px}}
+
+.user-package-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:16px 0}
+.user-package{background:#fff;color:#111827;border:1px solid #dce4ef;border-radius:15px;padding:15px;display:flex;flex-direction:column;gap:10px}
+.user-package h4{margin:0;font-size:14px;min-height:40px}
+.user-package strong{font-size:24px}
+.user-package .btn{margin-top:auto;text-align:center}
